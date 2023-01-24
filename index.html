@@ -14,7 +14,8 @@
 </head>
 <body>
 <div id="app" class="container">
-    
+    <input type="text" v-model="filter" placeholder="Search for a Dino!"/>
+
     <table id="dinoTable">
     <thead>
         <tr>
@@ -25,22 +26,23 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="row in sortedDinos" :key="row.name">
+
+        <tr v-for="(row,index) in sortedAndFilteredRows" :key="'name-${index}'">
         <td>{{ row.name }}</td>
         <td>{{ row.type }}</td>
         <td>{{ row.age }}</td>
         <td>{{ row.isAlive }}</td>
         </tr>
+
     </tbody>
         </table>
         <button @click="sort('age')" class="btn btn-outline-info">Sort by Age</button>
 </div>
-
-
 <script type="text/javascript">
     var app = new Vue({
     el: '#app',
     data: {
+    filter:'',
     rows: [
         {name: "Littlefoot", type: "Brontosaurus", age: 145500000, isAlive: false},
         {name: "Steve", type: "Operations Director", age: 44, isAlive: true},
@@ -53,8 +55,16 @@
       }
     },
     computed: {
-        sortedDinos() {
-            return this.rows.sort((a,b) => {
+        sortedAndFilteredRows(){
+            return this.rows
+
+            .filter(row => {
+                const name = row.name.toString().toLowerCase();
+                const searchTerm = this.filter.toLowerCase();
+
+                return name.includes(searchTerm);
+            })
+            .sort((a,b) => {
                 let order = this.sortOrders[this.sortKey]
                 let aV = a[this.sortKey]
                 let bV = b[this.sortKey]
@@ -69,7 +79,7 @@
             this.sortOrders[key] = this.sortOrders[key] * -1
         }
     }
-});
+})
 </script>
 </body>
 </html>
