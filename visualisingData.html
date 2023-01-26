@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualising Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <style>
+        .chartContainer{
+            display: flex;
+            width: 50%;
+        }
+        #pieChart{
+          width: 40%;
+        }
+        #barChart{
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+  <div class="chartContainer">
+    <canvas id="pieChart"></canvas>
+    <canvas id="barChart"></canvas>
+  </div>
+<script>
+var pieData = {
+        labels: [
+            'Cola', 
+            'Diet Cola', 
+            'Lemonade', 
+            'Dandelion and Burdock', 
+            'Orangeade'],
+        datasets: [{
+            data: [24, 20, 19, 60, 10],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 205, 86, 0.2)', 
+                'rgba(75, 192, 192, 0.2)', 
+                'rgba(54, 162, 235, 0.2)', 
+                'rgba(255, 159, 64, 0.2)'],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(75, 192, 192, 1)', 
+                'rgba(54, 162, 235, 1)', 
+                'rgba(255, 159, 64, 1)'],
+            borderWidth: 1
+            }]
+        };
+        var pieOptions = {
+            title: {
+            display: true,
+            text: 'Estimated litres of soft drink consumed at a student hackathon'
+            }
+        };
+
+        var barData = {
+            labels: [
+                'Teacakes', 
+                'Lollipops', 
+                'Parma Violets', 
+                'Chocolate Coins'],
+            datasets: [{
+                label: 'Estimated mass (g)',
+                data: [600, 700, 3000, 500],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)', 
+                    'rgba(255, 205, 86, 0.2)', 
+                    'rgba(75, 192, 192, 0.2)', 
+                    'rgba(54, 162, 235, 0.2)'],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)', 
+                    'rgba(255, 205, 86, 1)', 
+                    'rgba(75, 192, 192, 1)', 
+                    'rgba(54, 162, 235, 1)'],
+                borderWidth: 1
+            }]
+        };
+        var barOptions = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                    beginAtZero: true,
+                    max: 4000
+                }
+            }]
+            },
+            title: {
+                display: true,
+                text: 'Estimated mass of sweets consumed during a student hackathon'
+            }
+        };
+
+        var pieChart = new Chart(document.getElementById('pieChart'),{
+            type: 'pie',
+            data: pieData,
+            options: pieOptions
+        });
+        var barChart = new Chart(document.getElementById("barChart"),{
+            type: 'bar',
+            data: barData,
+            options: barOptions
+        });
+</script>
+</body>
