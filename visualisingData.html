@@ -25,7 +25,7 @@
     <canvas id="barChart"></canvas>
   </div>
 <script>
-var pieData = {
+    var pieData = {
         labels: [
             'Cola', 
             'Diet Cola', 
@@ -48,42 +48,41 @@ var pieData = {
                 'rgba(255, 159, 64, 1)'],
             borderWidth: 1
             }]
-        };
-        var pieOptions = {
-            title: {
-            display: true,
-            text: 'Estimated litres of soft drink consumed at a student hackathon'
+    };
+    var pieOptions = {
+        title: {
+        display: true,
+        text: 'Estimated litres of soft drink consumed at a student hackathon'
             }
-        };
-
-        var barData = {
-            labels: [
-                'Teacakes', 
-                'Lollipops', 
-                'Parma Violets', 
-                'Chocolate Coins'],
-            datasets: [{
-                label: 'Estimated mass (g)',
-                data: [600, 700, 3000, 500],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', 
-                    'rgba(255, 205, 86, 0.2)', 
-                    'rgba(75, 192, 192, 0.2)', 
-                    'rgba(54, 162, 235, 0.2)'],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)', 
-                    'rgba(255, 205, 86, 1)', 
-                    'rgba(75, 192, 192, 1)', 
-                    'rgba(54, 162, 235, 1)'],
-                borderWidth: 1
+    };
+    var barData = {
+        labels: [
+            'Teacakes', 
+            'Lollipops', 
+            'Parma Violets', 
+            'Chocolate Coins'],
+        datasets: [{
+            label: 'Estimated mass (g)',
+            data: [600, 700, 3000, 500],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)', 
+                'rgba(255, 205, 86, 0.2)', 
+                'rgba(75, 192, 192, 0.2)', 
+                'rgba(54, 162, 235, 0.2)'],
+            borderColor: [
+                'rgba(255, 99, 132, 1)', 
+                'rgba(255, 205, 86, 1)', 
+                'rgba(75, 192, 192, 1)', 
+                'rgba(54, 162, 235, 1)'],
+            borderWidth: 1
             }]
-        };
-        var barOptions = {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                    beginAtZero: true,
-                    max: 3500
+    };
+    var barOptions = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                beginAtZero: true,
+                max: 3500
                 }
             }]
             },
@@ -91,17 +90,17 @@ var pieData = {
                 display: true,
                 text: 'Estimated mass of sweets consumed during a student hackathon'
             }
-        };
+    };
 
-        var pieChart = new Chart(document.getElementById('pieChart'),{
-            type: 'pie',
-            data: pieData,
-            options: pieOptions
-        });
-        var barChart = new Chart(document.getElementById("barChart"),{
-            type: 'bar',
-            data: barData,
-            options: barOptions
-        });
+    var pieChart = new Chart(document.getElementById('pieChart'),{
+        type: 'pie',
+        data: pieData,
+        options: pieOptions
+    });
+    var barChart = new Chart(document.getElementById("barChart"),{
+        type: 'bar',
+        data: barData,
+        options: barOptions
+    });
 </script>
 </body>
